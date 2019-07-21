@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>CoderSchool_Week1</title>
+	<link rel="stylesheet" href="">
+    
+    <style>
+		.content {
+		  max-width: 700px;
+		  margin: auto;
+		}
+		
+		#message {
+		  background-repeat: no-repeat;
+		  background-size: auto;
+		}
+		
+		h1 {
+		  color: #B87333;
+		  font-size: 2em;
+		}
+
+   </style>
+</head>
+<body>
+	
+	<div class="content">
+		<h4>#CoderSchool_Week1</h4>
+		<h1>Number Guessing Game</h1>
+		<p>Enter your number</p>
+		<input type="number" id="number">
+		<button type="button" id="guess">Guess</button>
+		<div id="message"></div>
+		<h3>Your result : </h3>
+		<div id="yourresult"></div>
+	</div>
+<script>
+//random number between 0 to 100
+var finalResult=Math.floor(Math.random()*101);
+
+var count = 10;
+var yResult="";
+
+var yourResult = document.getElementById('yourresult');
+var message = document.getElementById('message');
+var button = document.getElementById('guess');
+
+//function test yourNumber with final result
+button.addEventListener('click', function() {
+
+//get value your input
+var yourNumber = document.getElementById('number').value;
+
+
+	if(yourNumber!=finalResult){
+
+		count--;
+
+		message.style.backgroundColor="red";
+
+		yResult+=yourNumber+"</br>";   
+
+		yourResult.innerHTML="<p >" +yResult +"</p>";
+
+		if(yourNumber>finalResult)
+
+		   message.innerHTML="Fail. Its too hight. You have "+count+" times";
+
+		else 
+
+			message.innerHTML="Fail. Its too low. You have "+count+" times";
+
+}
+
+   else if(yourNumber==finalResult){
+
+		message.innerHTML="Success"
+
+		message.style.Color="green"
+
+		alert("Success! The game is will restart after 10 second")
+
+		setTimeout(()=>{ location.reload()},10000)
+
+}
+
+ 
+	if(count==0){
+
+		alert("My result is "+finalResult+". Click OK play again");
+
+		location.reload();
+
+}
+
+});
+
+
+</script>
+
+</body>
+</html>
